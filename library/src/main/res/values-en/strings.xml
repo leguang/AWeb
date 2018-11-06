@@ -1,0 +1,5 @@
+<resources>
+    <string name="close">close</string>
+    <string name="share">share</string>
+    <string name="go_to_browser">Jump to browsers</string>
+</resources>

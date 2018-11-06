@@ -1,0 +1,5 @@
+<resources>
+    <string name="close">关闭</string>
+    <string name="share">分享</string>
+    <string name="go_to_browser">跳转到浏览器</string>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/close"
+        android:enabled="true"
+        android:icon="@drawable/ic_close_black_24dp"
+        android:orderInCategory="100"
+        android:title="@string/close"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/share"
+        android:enabled="true"
+        android:icon="@drawable/ic_share_black_24dp"
+        android:orderInCategory="100"
+        android:title="@string/share"
+        android:visible="true"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/go2browser"
+        android:enabled="true"
+        android:orderInCategory="100"
+        android:title="@string/go_to_browser"
+        android:visible="true"
+        app:showAsAction="never" />
+</menu>
