@@ -1,5 +1,7 @@
 package cn.itsite.aweb;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -21,9 +23,21 @@ public class WebActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle extras = getIntent().getExtras();
+        //目的是为了兼容两种启动方式
+        //1.指定启动，这种的url是存Bundle里
+        //2.隐式启动，与浏览器行为一致，url都是放date里。
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle == null) {
+            Uri uri = intent.getData();
+            bundle = new Bundle();
+            if (uri != null) {
+                bundle.putString(WebFragment.KEY_LINK, uri.toString());
+            }
+        }
+
         if (savedInstanceState == null) {
-            loadRootFragment(android.R.id.content, WebFragment.getInstance(extras));
+            loadRootFragment(android.R.id.content, WebFragment.getInstance(bundle));
         }
     }
 }

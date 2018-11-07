@@ -5,7 +5,18 @@
     <application>
         <activity
             android:name=".WebActivity"
-            android:theme="@style/AWebTheme" />
+            android:theme="@style/AWebTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>
