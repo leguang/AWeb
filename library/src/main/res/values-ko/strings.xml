@@ -1,0 +1,5 @@
+<resources>
+    <string name="close">닫기</string>
+    <string name="share">공유</string>
+    <string name="go_to_browser">브라우저로 넘어가기</string>
+</resources>

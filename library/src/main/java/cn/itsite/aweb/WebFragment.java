@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -212,12 +211,8 @@ public class WebFragment extends BaseFragment {
     public class JsObject {
 
         @JavascriptInterface
-        public void share4Revive(String url, String title) {
-            if (TextUtils.isEmpty(url)) {
-//                DialogHelper.warningSnackbar(getView(), getText(R.string.sharing_failed));
-                return;
-            }
-            share(title, url);
+        public void action(String url, String title) {
+            Log.d(TAG, "action: " + url + title);
         }
     }
 
