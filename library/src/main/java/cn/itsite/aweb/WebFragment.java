@@ -41,7 +41,7 @@ import cn.itsite.abase.mvp.view.base.BaseFragment;
 @Route(path = "/web/WebFragment")
 public class WebFragment extends BaseFragment {
     public static final String TAG = WebFragment.class.getSimpleName();
-    public static final String KEY_LINK = "KEY_LINK";
+    public static final String KEY_LINK = "key_link";
     protected WebView webView;
     protected Toolbar toolbar;
     protected String link;
