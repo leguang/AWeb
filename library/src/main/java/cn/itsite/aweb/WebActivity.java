@@ -24,16 +24,17 @@ public class WebActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //目的是为了兼容两种启动方式
-        //1.指定启动，这种的url是存Bundle里
-        //2.隐式启动，与浏览器行为一致，url都是放date里。
+        //1.指定启动，这种的url是存Bundle
+        //2.隐式启动，与浏览器行为一致，url都是放date里
         Intent intent = getIntent();
+        Uri uri = intent.getData();
         Bundle bundle = intent.getExtras();
         if (bundle == null) {
-            Uri uri = intent.getData();
             bundle = new Bundle();
-            if (uri != null) {
-                bundle.putString(WebFragment.KEY_LINK, uri.toString());
-            }
+        }
+
+        if (Intent.ACTION_VIEW.equals(intent.getAction()) || uri != null) {
+            bundle.putString(WebFragment.KEY_LINK, uri.toString());
         }
 
         if (savedInstanceState == null) {
