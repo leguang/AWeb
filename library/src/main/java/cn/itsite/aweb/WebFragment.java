@@ -138,8 +138,8 @@ public class WebFragment extends BaseFragment {
                     intent.setData(Uri.parse(url));
                     startActivity(intent);
                 }
-                return super.shouldOverrideUrlLoading(view, url);
-//                return true;
+//                return super.shouldOverrideUrlLoading(view, url);
+                return true;
             }
 
             @Override
