@@ -129,7 +129,17 @@ public class WebFragment extends BaseFragment {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 link = url;
                 view.loadUrl(url);
-                return true;
+                Logger.e("url-->" + url);
+
+                // 如下方案可在非微信内部WebView的H5页面中调出微信支付
+                if (url.startsWith("mol://pay?")) {
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    startActivity(intent);
+                }
+                return super.shouldOverrideUrlLoading(view, url);
+//                return true;
             }
 
             @Override
