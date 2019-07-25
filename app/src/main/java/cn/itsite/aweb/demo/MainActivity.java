@@ -4,12 +4,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
 
-import com.alibaba.android.arouter.launcher.ARouter;
+import androidx.appcompat.app.AppCompatActivity;
 
-import cn.itsite.abase.mvp.view.base.BaseActivity;
-import cn.itsite.aweb.WebFragment;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +23,14 @@ public class MainActivity extends BaseActivity {
 //                    .with(bundle)
 //                    .navigation();
 
-            ARouter.getInstance()
-                    .build("/web/WebActivity")
-                    .withString(WebFragment.KEY_LINK, TextUtils.isEmpty(et.getText().toString()) ? "https://www.baidu.com" : et.getText().toString())
-                    .navigation();
+//            ARouter.openLog();     // 打印日志
+//            ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+//            ARouter.init(getApplication());
+//
+//            ARouter.getInstance()
+//                    .build("/web/WebActivity")
+//                    .withString(WebFragment.KEY_LINK, TextUtils.isEmpty(et.getText().toString()) ? "https://www.baidu.com" : et.getText().toString())
+//                    .navigation();
 
 //            Intent intent = new Intent(Intent.ACTION_VIEW);    //为Intent设置Action属性
 //            intent.setData(Uri.parse("https://www.baidu.com")); //为Intent设置DATA属性
@@ -44,9 +46,9 @@ public class MainActivity extends BaseActivity {
 
         });
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fl, new MainFragment())
-                .commit();
+//        getSupportFragmentManager().beginTransaction()
+//                .add(R.id.fl, new MainFragment())
+//                .commit();
 
     }
 }
