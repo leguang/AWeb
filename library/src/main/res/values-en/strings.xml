@@ -1,5 +1,5 @@
 <resources>
-    <string name="close">close</string>
-    <string name="share">share</string>
-    <string name="go_to_browser">Jump to browsers</string>
+    <string name="web_close">close</string>
+    <string name="web_share">share</string>
+    <string name="web_open_in_browser">Open_in_browser</string>
 </resources>
