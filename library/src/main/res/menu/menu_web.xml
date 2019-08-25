@@ -7,7 +7,7 @@
         android:enabled="true"
         android:icon="@drawable/ic_close_black_24dp"
         android:orderInCategory="100"
-        android:title="@string/close"
+        android:title="@string/web_close"
         android:visible="true"
         app:showAsAction="ifRoom" />
 
@@ -16,7 +16,7 @@
         android:enabled="true"
         android:icon="@drawable/ic_share_black_24dp"
         android:orderInCategory="100"
-        android:title="@string/share"
+        android:title="@string/web_share"
         android:visible="true"
         app:showAsAction="never" />
 
@@ -24,7 +24,7 @@
         android:id="@+id/go2browser"
         android:enabled="true"
         android:orderInCategory="100"
-        android:title="@string/go_to_browser"
+        android:title="@string/web_open_in_browser"
         android:visible="true"
         app:showAsAction="never" />
 </menu>
