@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +19,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.orhanobut.logger.Logger;
 
-import cn.itsite.abase.BaseApp;
 import cn.itsite.abase.mvp.view.base.BaseActivity;
 import cn.itsite.abase.mvp.view.base.BaseFragment;
 
@@ -86,15 +86,12 @@ public class WebFragment extends BaseFragment {
         toolbar.setNavigationOnClickListener(v -> onBackPressedSupport());
         toolbar.inflateMenu(R.menu.menu_web);
         toolbar.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.close) {
-                ((BaseActivity) _mActivity).onBackPressedSupport();
-            } else if (item.getItemId() == R.id.share) {
+            if (item.getItemId() == R.id.share) {
                 share(webView.getTitle(), webView.getUrl());
-            }
-            if (item.getItemId() == R.id.go2browser) {
+            } else if (item.getItemId() == R.id.go2browser) {
                 Uri uri = Uri.parse(webView.getUrl());
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                if (intent.resolveActivity(BaseApp.mContext.getPackageManager()) != null) {
+                if (intent.resolveActivity(_mActivity.getPackageManager()) != null) {
                     startActivity(intent);
                 }
             }
@@ -129,7 +126,6 @@ public class WebFragment extends BaseFragment {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 link = url;
                 view.loadUrl(url);
-                Logger.e("url-->" + url);
 
                 // 如下方案可在非微信内部WebView的H5页面中调出微信支付
                 if (url.startsWith("mol://pay?")) {
@@ -149,6 +145,7 @@ public class WebFragment extends BaseFragment {
                 String title = view.getTitle();
                 if (toolbar != null) {
                     toolbar.setTitle(title);
+                    toolbar.setSubtitle(url);
                 }
 
                 if (progressBar.getVisibility() != View.INVISIBLE) {
@@ -200,7 +197,7 @@ public class WebFragment extends BaseFragment {
         if (webView.canGoBack()) {
             webView.goBack();
         } else {
-            ((BaseActivity) _mActivity).onBackPressedSupport();
+            _mActivity.onBackPressedSupport();
         }
         return true;
     }

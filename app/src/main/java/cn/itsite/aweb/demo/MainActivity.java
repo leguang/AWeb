@@ -1,10 +1,14 @@
 package cn.itsite.aweb.demo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import cn.itsite.aweb.WebActivity;
+import cn.itsite.aweb.WebFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -40,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
 //            intent.setData(Uri.parse("https://www.baidu.com")); //为Intent设置DATA属性
 //            startActivity(intent);
 
-//            Intent intent = new Intent(this, WebActivity.class);
-//            intent.putExtra(WebFragment.KEY_LINK, TextUtils.isEmpty(et.getText().toString()) ? "https://www.baidu.com" : et.getText().toString());
-//            startActivity(intent);
+            Intent intent = new Intent(this, WebActivity.class);
+            intent.putExtra(WebFragment.KEY_LINK, TextUtils.isEmpty(et.getText().toString()) ? "https://www.baidu.com" : et.getText().toString());
+            startActivity(intent);
 
         });
 
