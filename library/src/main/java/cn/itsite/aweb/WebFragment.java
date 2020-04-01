@@ -26,7 +26,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.orhanobut.logger.Logger;
 
-import cn.itsite.abase.mvp.view.base.BaseActivity;
 import cn.itsite.abase.mvp.view.base.BaseFragment;
 
 /**
@@ -37,7 +36,6 @@ import cn.itsite.abase.mvp.view.base.BaseFragment;
  * @time: 2016/9/4 0004 11:50
  * @description: 负责项目中的web部分。
  */
-
 @Route(path = "/web/WebFragment")
 public class WebFragment extends BaseFragment {
     public static final String TAG = WebFragment.class.getSimpleName();
@@ -67,9 +65,9 @@ public class WebFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_web, container, false);
-        toolbar = view.findViewById(R.id.toolbar_web_fragment);
+        toolbar = view.findViewById(R.id.toolbar);
         progressBar = view.findViewById(R.id.progressBar_web_fragment);
-        webView = view.findViewById(R.id.webView_web_fragment);
+        webView = view.findViewById(R.id.webView);
         return attachToSwipeBack(view);
     }
 
@@ -82,7 +80,6 @@ public class WebFragment extends BaseFragment {
 
     private void initToolbar() {
         initStateBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
         toolbar.setNavigationOnClickListener(v -> onBackPressedSupport());
         toolbar.inflateMenu(R.menu.menu_web);
         toolbar.setOnMenuItemClickListener(item -> {
@@ -223,7 +220,7 @@ public class WebFragment extends BaseFragment {
         }
     }
 
-    public void share(String title, String content) {
+    private void share(String title, String content) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT, content);
